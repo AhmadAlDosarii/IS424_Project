@@ -1,5 +1,4 @@
 from django.shortcuts import render,HttpResponse, redirect
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -9,7 +8,7 @@ def index(request):
     return HttpResponse("Hello")
 
 def Home(request):
-    return render (request,'home.html')
+    return render (request,'Products/home.html')
 
 def Signup(request):
     if request.method=='POST':
@@ -26,7 +25,7 @@ def Signup(request):
             my_user.save()
             return redirect('login')
         
-    return render(request,'signup.html')
+    return render(request,'Products/signup.html')
 
 def Login(request):
     if request.method=='POST':
@@ -39,7 +38,7 @@ def Login(request):
         else:
             return HttpResponse('Username or Password is incorrect!')
         
-    return render (request,'login.html')
+    return render (request,'Products/login.html')
 
 def Logout(request):
     logout(request)
